@@ -1,10 +1,11 @@
 'use client'
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Home() {
-  const [result, setResult] = useState("");
-  const [expression, setExpression] = useState("");
-  const handleButtonClick = (value) => {
+  const [result, setResult] = useState<string>("");
+  const [expression, setExpression] = useState<string>("");
+
+  const handleButtonClick = (value: string): void => {
     if (value === "=") {
       try {
         const evalResult = eval(expression).toString();
@@ -21,7 +22,8 @@ export default function Home() {
       setExpression((prevExpression) => prevExpression + value);
     }
   };
-  const buttons = [
+
+  const buttons: string[] = [
     "7",
     "8",
     "9",
@@ -40,12 +42,11 @@ export default function Home() {
     "+",
     "C",
   ];
+
   return (
     <>
       <main className="flex min-h-screen flex-col items-center p-24">
-        <h1 className="text-5xl text-white font-bold font-serif ">
-          Calculator
-        </h1>
+        <h1 className="text-5xl text-white font-bold font-serif">Calculator</h1>
         <div className="bg-[#1e242b] p-6 rounded border-[#6fddfb] border-2 mt-6">
           <input
             type="text"
